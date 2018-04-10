@@ -5,8 +5,8 @@
 
 #define Q_MAX_DEPTH 8
 
-typedef uint8_t QSignal;
-typedef uint16_t QState;
+typedef int QSignal;
+typedef int QState;
 
 typedef struct
 {
