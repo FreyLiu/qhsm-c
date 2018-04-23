@@ -42,6 +42,7 @@ static void do_transition(QHsm *me)
     QStateHandler path[Q_MAX_DEPTH];
     ptrdiff_t top = 0;
     ptrdiff_t lca = -1;
+    ptrdiff_t i = 0;
 
     path[0] = target;
 
@@ -61,7 +62,7 @@ static void do_transition(QHsm *me)
         source(me, &standard_events[QEP_EMPTY_SIG_]);
         source = me->effective_;
 
-        for (ptrdiff_t i = 0; i <= top; ++i) {
+        for (i = 0; i <= top; ++i) {
             if (path[i] == source) {
                 lca = i;
                 break;
@@ -71,7 +72,7 @@ static void do_transition(QHsm *me)
 
     target = path[lca];
 
-    for (ptrdiff_t i = lca - 1; i >= 0; --i) {
+    for (i = lca - 1; i >= 0; --i) {
         target = path[i];
         target(me, &standard_events[Q_ENTRY_SIG]);
     }
