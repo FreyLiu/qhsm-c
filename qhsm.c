@@ -109,6 +109,8 @@ QState QMsm_dispatch(QHsm *me, const QEvt *const event)
         do_transition(me);
         break;
     case (QState)(Q_RET_HANDLED):
+    case (QState)(Q_RET_UNHANDLED):
+    case (QState)(Q_RET_IGNORED):
         me->effective_ = me->current_;
         break;
     default:
