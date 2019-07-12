@@ -119,3 +119,9 @@ QState QMsm_dispatch(QHsm *me, const QEvt *const event)
 
     return result;
 }
+
+QState QMsm_simple_dispatch(QHsm *me, QSignal signal)
+{
+    const QEvt event = {signal};
+    return QMsm_dispatch(me, &event);
+}

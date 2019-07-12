@@ -53,7 +53,11 @@ typedef struct
     (QState)(Q_RET_SUPER))
 
 #define QMSM_INIT(me, event) (QMsm_init(me, event))
-#define QMSM_DISPATCH(me, event) (QMsm_dispatch(me, event)) 
+#define QMSM_DISPATCH(me, event) (QMsm_dispatch(me, event))
+#define SIMPLE_DISPATCH(me, name) (QMsm_simple_dispatch(me, name ## _SIG))
+
+/* Grabs e from outer scope */
+#define PASS_EVENT_TO(me) (QMsm_dispatch(me, e))
 
 #ifdef __cplusplus
 extern "C" {
@@ -65,6 +69,7 @@ void QHsm_ctor(QHsm *const me, QStateHandler initial);
 
 void QMsm_init(QHsm *me, const QEvt *const event);
 QState QMsm_dispatch(QHsm *me, const QEvt *const event);
+QState QMsm_simple_dispatch(QHsm *me, QSignal signal);
 
 #ifdef __cplusplus
 }
