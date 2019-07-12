@@ -3,10 +3,10 @@
 #include <stddef.h>
 
 const QEvt standard_events[] = {
-    { (QSignal)(QEP_EMPTY_SIG_) },
-    { (QSignal)(Q_ENTRY_SIG) },
-    { (QSignal)(Q_EXIT_SIG) },
-    { (QSignal)(Q_INIT_SIG) },
+    {(QSignal)(QEP_EMPTY_SIG_)},
+    {(QSignal)(Q_ENTRY_SIG)},
+    {(QSignal)(Q_EXIT_SIG)},
+    {(QSignal)(Q_INIT_SIG)},
 };
 
 QState QHsm_top(void *const me, const QEvt *const event)
